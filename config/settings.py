@@ -38,11 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Local 
-    'posts', # new
-
     # 3rd-party apps
-    'rest_framework' # new
+    'rest_framework', # new
 
     #local
     'posts.apps.PostsConfig',
