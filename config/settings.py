@@ -43,7 +43,6 @@ INSTALLED_APPS = [
 
     #local
     'posts.apps.PostsConfig',
-    
     ]
 
 # new
