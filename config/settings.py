@@ -37,19 +37,34 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',# new
 
     # 3rd-party apps
-    'rest_framework', # new
+    'rest_framework', 
+    'rest_framework.authtoken', # new
+    'dj_rest_auth', # new
+    'allauth',# new
+    'allauth.account',
+    'allauth.socialaccount',# new
+    'dj_rest_auth.registration', # new
 
     #local
     'posts.apps.PostsConfig',
     ]
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'# new
+
+SITE_ID = 1 # new
+
 # new
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-    ]
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication', # New
+    ],
 }
 
 
