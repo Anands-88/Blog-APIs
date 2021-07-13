@@ -1,22 +1,19 @@
-from rest_framework import generics, permissions
+from rest_framework import viewsets # new
 from rest_framework.settings import perform_import
 from .models import * 
 from .serializers import *
-from .permissions import IsAuthorOrReadOnly # new
+from .permissions import IsAuthorOrReadOnly
 
-class PostList(generics.ListCreateAPIView):
-    queryset = Post.objects.all()
-    serializer_class = PostSerializer
-
-class PostDetail(generics.RetrieveUpdateDestroyAPIView):
+class PostViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthorOrReadOnly,)
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
-class CommentList(generics.ListCreateAPIView):
+class CommentViewSet(viewsets.ModelViewSet): # new
+    permission_classes = (IsAuthorOrReadOnly,)
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
-class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Comment.objects.all()
-    serializer_class = CommentSerializer
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = get_user_model().objects.all()
+    serializer_class = UserSerializer
